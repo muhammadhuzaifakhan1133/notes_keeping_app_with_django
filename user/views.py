@@ -7,6 +7,7 @@ from rest_framework.request import Request
 
 class IsSuperuser(BasePermission):
     def has_permission(self, request: Request, view):
+        # return True
         user: UserModel = request.user
         if user and user.is_superuser:
             return True

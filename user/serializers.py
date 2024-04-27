@@ -5,7 +5,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     def __init__(self, *args, **kwargs):
         super(UserSerializer, self).__init__(*args, **kwargs)
-        if self.context['request'].method == "PUT":
+        if "request" in self.context.keys() and self.context['request'].method == "PUT":
             self.fields.pop('password')
 
     password = serializers.CharField(write_only=True)
